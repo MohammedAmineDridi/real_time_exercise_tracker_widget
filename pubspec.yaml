@@ -26,7 +26,10 @@ topics:
   - fitness
   - coaching
   - gym
-version: 1.0.0+1
+platforms:
+  android:
+  ios:
+version: 1.0.0
 
 environment:
   sdk: '>=3.3.4 <4.0.0'
