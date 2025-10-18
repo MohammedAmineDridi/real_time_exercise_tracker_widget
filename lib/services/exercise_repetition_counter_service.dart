@@ -97,7 +97,6 @@ class ExerciseRepetitionCounterService {
         if (currentAngle < lowerDifficultyAngleOffset) {
           _readyToCount = true;
           _movementStartTime = DateTime.now();
-          Utils.printf("bbbbbbbb mouvement startTimer $_movementStartTime");
           _state = RepState.waitingUpwardAfterDown;
         }
         break;
@@ -105,15 +104,14 @@ class ExerciseRepetitionCounterService {
       case RepState.waitingUpwardAfterDown:
         if (currentAngle > upperDifficultyAngleOffset && _readyToCount) {
           final elapsed = DateTime.now().difference(_movementStartTime!).inMilliseconds;
-          Utils.printf("bbbbbbbb Movement duration = $elapsed ms");
 
           if (elapsed < minMovementDurationMs) {
-            Utils.printf("bbbbbbbb ❌ Too fast ($elapsed ms), rep not counted (min = $minMovementDurationMs ms)");
+            Utils.printf("❌ Too fast ($elapsed ms), rep not counted (min = $minMovementDurationMs ms)");
           } else if (elapsed > maxMovementDurationMs) {
-            Utils.printf("bbbbbbbb ❌ Too slow ($elapsed ms), rep not counted (max = $maxMovementDurationMs ms)");
+            Utils.printf("❌ Too slow ($elapsed ms), rep not counted (max = $maxMovementDurationMs ms)");
           } else {
             _reps++;
-            Utils.printf("bbbbbbbb ✅ Good rep! reps = $_reps (time=$elapsed ms)");
+            Utils.printf("✅ Good rep! reps = $_reps (time=$elapsed ms)");
           }
           _readyToCount = false;
           _movementStartTime = null;
