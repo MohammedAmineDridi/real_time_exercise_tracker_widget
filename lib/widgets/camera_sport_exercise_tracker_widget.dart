@@ -63,6 +63,16 @@ class CameraExerciseTrackerWidgetState extends State<CameraSportExerciseTrackerW
     _initCamera();
   }
 
+  @override
+  void didUpdateWidget(covariant CameraSportExerciseTrackerWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.exerciseName != widget.exerciseName || oldWidget.difficultyLevel != widget.difficultyLevel) {
+      exercise = widget.exerciseName.exerciseEntity;
+      exercise = exercise.copyWith(difficultyLevel: widget.difficultyLevel);
+      _repService = ExerciseRepetitionCounterService(exercise: exercise);
+    }
+  }
+
   Future<void> _initCamera() async {
     try {
       await _cameraService.initialize(widget.cameraConfig!);

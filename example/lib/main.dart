@@ -138,7 +138,6 @@ class ExampleAppState extends State<ExampleApp> {
                     onChanged: (val) {
                       setState(() {
                         selectedDifficulty = val!;
-                        reps = 0;
                       });
                     },
                   ),
