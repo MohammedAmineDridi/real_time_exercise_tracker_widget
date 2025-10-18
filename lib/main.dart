@@ -4,7 +4,6 @@ import 'package:sport_exercise_tracker_widget/utils/enums.dart';
 import 'package:sport_exercise_tracker_widget/utils/utils.dart';
 import 'package:sport_exercise_tracker_widget/widgets/camera_sport_exercise_tracker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_better_camera/camera.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text("Real Time Exercise Tracker Widget")),
         body: CameraSportExerciseTrackerWidget(
-          cameraConfig: CameraConfig(cameraDirection: CameraLensDirection.front,resolution: ResolutionPreset.high, enableAudio: false),
+          cameraConfig: CameraConfig(cameraDirection: CameraDirection.front,resolution: CameraResolutionPreset.high, enableAudio: false),
           exerciseName: ExerciseName.curl,
           difficultyLevel: ExerciseDifficultyLevel.hard,
           enableExerciseRepsCounting:true,

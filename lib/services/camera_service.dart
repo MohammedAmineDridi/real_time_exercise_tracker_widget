@@ -1,5 +1,6 @@
 import 'package:flutter_better_camera/camera.dart';
 import 'package:sport_exercise_tracker_widget/configs/camera_config.dart';
+import 'package:sport_exercise_tracker_widget/utils/enums.dart';
 
 class CameraService {
   CameraController? controller;
@@ -19,13 +20,13 @@ class CameraService {
     if (_cameras.isEmpty) {
       throw Exception("No camera available");
     }
-    final selectedCamera = config.cameraDirection == CameraLensDirection.front
+    final selectedCamera = config.cameraDirection == CameraDirection.front
         ? _cameras.firstWhere((c) => c.lensDirection == CameraLensDirection.front)
         : _cameras.firstWhere((c) => c.lensDirection == CameraLensDirection.back);
 
     controller = CameraController(
       selectedCamera,
-      config.resolution,
+      config.convertCameraPresetToResolutionPreset(config.resolution),
       enableAudio: config.enableAudio,
     );
     await controller!.initialize();

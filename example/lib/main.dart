@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sport_exercise_tracker_widget/camera_sport_exercise_tracker_widget.dart';
-import 'package:flutter_better_camera/camera.dart';
-import 'package:sport_exercise_tracker_widget/services/camera_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +15,7 @@ class ExampleApp extends StatefulWidget {
 class ExampleAppState extends State<ExampleApp> {
   ExerciseName selectedExercise = ExerciseName.curl;
   ExerciseDifficultyLevel selectedDifficulty = ExerciseDifficultyLevel.easy;
-  CameraLensDirection selectedCamera = CameraLensDirection.front;
+  CameraDirection selectedCamera = CameraDirection.front;
   int reps = 0;
   bool counting = false;
   late CameraConfig cameraConfig;
@@ -27,7 +25,7 @@ class ExampleAppState extends State<ExampleApp> {
     super.initState();
     cameraConfig = CameraConfig(
       cameraDirection: selectedCamera,
-      resolution: ResolutionPreset.high,
+      resolution: CameraResolutionPreset.high,
       enableAudio: false,
     );
   }
@@ -91,9 +89,9 @@ class ExampleAppState extends State<ExampleApp> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Camera selector
-                  DropdownButton<CameraLensDirection>(
+                  DropdownButton<CameraDirection>(
                     value: selectedCamera,
-                    items: CameraLensDirection.values
+                    items: CameraDirection.values
                         .map((e) => DropdownMenuItem(
                             value: e, child: Text(e.name.toUpperCase())))
                         .toList(),
@@ -102,7 +100,7 @@ class ExampleAppState extends State<ExampleApp> {
                         selectedCamera = val!;
                         cameraConfig = CameraConfig(
                           cameraDirection: selectedCamera,
-                          resolution: ResolutionPreset.high,
+                          resolution: CameraResolutionPreset.high,
                           enableAudio: false,
                         );
                       });

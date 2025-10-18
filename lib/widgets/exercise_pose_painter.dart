@@ -1,5 +1,5 @@
-import 'package:flutter_better_camera/camera.dart';
 import 'package:sport_exercise_tracker_widget/utils/consts.dart';
+import 'package:sport_exercise_tracker_widget/utils/enums.dart';
 import 'package:sport_exercise_tracker_widget/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
@@ -12,7 +12,7 @@ class ExercisePosePainterWidget extends CustomPainter {
   late Paint linePaint;
 
   final List<Pose> poses;
-  final CameraLensDirection cameraDirection;
+  final CameraDirection cameraDirection;
   final Size widgetSize;
   final Size imageSize;
   final Exercise exercise;
@@ -121,7 +121,7 @@ class ExercisePosePainterWidget extends CustomPainter {
   Offset _convert(PoseLandmark landmark, double scaleX, double scaleY) {
   double dx, dy;
 
-  if (cameraDirection == CameraLensDirection.front) {
+  if (cameraDirection == CameraDirection.front) {
     // Front camera: mirror horizontally
     dx = widgetSize.width - (landmark.y * scaleX);
     dy = (imageSize.width - landmark.x) * scaleY;

@@ -2,6 +2,20 @@ import 'package:sport_exercise_tracker_widget/models/exercises.dart';
 import 'package:sport_exercise_tracker_widget/utils/consts.dart';
 import 'package:sport_exercise_tracker_widget/models/exercise_models.dart';
 
+enum CameraDirection {
+  front,
+  back
+}
+
+enum CameraResolutionPreset {
+  low,
+  medium,
+  high,
+  veryHigh,
+  ultraHigh,
+  max,
+}
+
 enum ExerciseName {
   curl,
   squat,
